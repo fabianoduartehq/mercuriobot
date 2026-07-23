@@ -1,10 +1,9 @@
-name: Run Mercury Retrograde Bot
-
+name: Run Mercuriobot
 on:
   schedule:
-    # Runs once daily at 12:00 UTC (9:00 AM BRT)
-    - cron: '0 12 * * *'
-  workflow_dispatch: # Allows manual trigger anytime
+    # Executa 1x ao dia às 12:17 UTC (09:17 BRT)
+    - cron: '17 12 * * *'
+  workflow_dispatch:
 
 jobs:
   run-bot:
