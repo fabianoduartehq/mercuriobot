@@ -1,0 +1,38 @@
+name: Run Mercury Retrograde Bot
+
+on:
+  schedule:
+    # Runs once daily at 12:00 UTC (9:00 AM BRT)
+    - cron: '0 12 * * *'
+  workflow_dispatch: # Allows manual trigger anytime
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Cache NASA JPL Ephemeris Data
+        uses: actions/cache@v4
+        with:
+          # Skyfield saves de421.bsp to the working directory (repo root)
+          path: de421.bsp
+          key: skyfield-de421-v1
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
+          BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
+          # TZ is read by bot.py to determine the correct local date
+          TZ: 'America/Sao_Paulo'
+        run: python bot.py
