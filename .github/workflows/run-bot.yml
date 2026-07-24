@@ -1,9 +1,10 @@
 name: Run Mercuriobot
+
 on:
   schedule:
     # Executa 1x ao dia às 12:17 UTC (09:17 BRT)
     - cron: '17 12 * * *'
-  workflow_dispatch:
+  workflow_dispatch: # Permite disparo manual na aba Actions
 
 jobs:
   run-bot:
@@ -20,7 +21,6 @@ jobs:
       - name: Cache NASA JPL Ephemeris Data
         uses: actions/cache@v4
         with:
-          # Skyfield saves de421.bsp to the working directory (repo root)
           path: de421.bsp
           key: skyfield-de421-v1
 
@@ -32,6 +32,5 @@ jobs:
         env:
           BSKY_HANDLE: ${{ secrets.BSKY_HANDLE }}
           BSKY_PASSWORD: ${{ secrets.BSKY_PASSWORD }}
-          # TZ is read by bot.py to determine the correct local date
           TZ: 'America/Sao_Paulo'
         run: python bot.py
