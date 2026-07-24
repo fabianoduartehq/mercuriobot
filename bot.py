@@ -174,8 +174,9 @@ def determine_today_announcement(today_date):
 
         # 2. Contagem Regressiva Pré-Retrógrado (10 a 1 dias antes)
         if 1 <= days_to_retro_start <= 10:
+            default_header = "🚨 COMEÇA AMANHÃ:" if days_to_retro_start == 1 else f"⚠️ FALTAM {days_to_retro_start} DIAS:"
             header = messages.get("pre_retrograde_headers", {}).get(
-                str(days_to_retro_start), f"⚠️ FALTAM {days_to_retro_start} DIAS:"
+                str(days_to_retro_start), default_header
             )
             phrase = pick_message(messages.get("pre_retrograde_phrases", []))
             return f"{header} {phrase}"
@@ -184,10 +185,13 @@ def determine_today_announcement(today_date):
         if days_to_retro_end == 0:
             return pick_message(messages["retrograde_end_event"])
 
-        # 4. Contagem Regressiva de Saída (7 a 1 dias antes do fim)
-        if 1 <= days_to_retro_end <= 7 and today_date >= retro_start:
+        # 4. Contagem Regressiva de Saída (0 a 7 dias antes do fim do retrógrado)
+        # last_retro_day é a véspera da estação direta (o último dia do retrógrado)
+        days_to_last_retro_day = (retro_end - timedelta(days=1) - today_date).days
+        if 0 <= days_to_last_retro_day <= 7 and today_date >= retro_start:
+            default_header = "🚨 TERMINA HOJE:" if days_to_last_retro_day == 0 else f"⏳ RESTAM {days_to_last_retro_day} DIAS:"
             header = messages.get("exit_retrograde_headers", {}).get(
-                str(days_to_retro_end), f"⏳ RESTAM {days_to_retro_end} DIAS:"
+                str(days_to_last_retro_day), default_header
             )
             phrase = pick_message(messages.get("exit_retrograde_phrases", []))
             return f"{header} {phrase}"

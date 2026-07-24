@@ -54,7 +54,7 @@
     "4": "⚠️ FALTAM 4 DIAS (Alerta Pré-Retrógrado):",
     "3": "⚠️ FALTAM 3 DIAS (Mercúrio Quase Estacionário):",
     "2": "⚠️ FALTAM 2 DIAS (Véspera da Retrogradação):",
-    "1": "🚨 FALTA 1 DIA (Último dia de Movimento Direto):"
+    "1": "🚨 COMEÇA AMANHÃ! (Último dia de Movimento Direto):"
   },
   "pre_retrograde_phrases": [
     "Mercúrio está desacelerando para entrar em retrógrado! Comece a fazer backup de tudo enquanto há tempo! 📲😬 #MercurioRetrogrado",
@@ -83,8 +83,9 @@
     "5": "⏳ RESTAM 5 DIAS (Descongestonamento Cósmico):",
     "4": "⏳ RESTAM 4 DIAS (Transição para o Direto):",
     "3": "⏳ RESTAM 3 DIAS (Mercúrio Estacionário de Saída):",
-    "2": "⏳ RESTAM 2 DIAS (Véspera do Movimento Direto):",
-    "1": "⏳ RESTA 1 DIA (Últimas Horas de Retrogradação):"
+    "2": "⏳ RESTAM 2 DIAS (Antepenúltimo dia de Retrógrado):",
+    "1": "⏳ RESTA 1 DIA (Penúltimo dia de Retrógrado):",
+    "0": "🚨 TERMINA HOJE! (Últimas Horas de Retrogradação):"
   },
   "exit_retrograde_phrases": [
     "A luz no fim do túnel começou a brilhar! A retrogradação está perdendo força 🕯️✨ #MercurioRetrogrado",
