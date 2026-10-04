@@ -1,0 +1,12 @@
+# clasp (credenciais do Google — nunca commitar)
+.clasprc.json
+node_modules/
+
+# Python
+__pycache__/
+*.pyc
+.env
+.venv/
+
+# Efemérides baixadas pelo Skyfield
+de421.bsp
